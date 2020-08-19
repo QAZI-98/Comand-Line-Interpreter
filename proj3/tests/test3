@@ -1,0 +1,49 @@
+#!/bin/sh
+echo "test3: ./proj3 silent ls files GT output"
+rm -f out1 
+
+../proj3 silent ls files GT output > out1 2>&1  
+
+diff out1 r3
+ret_val=$?
+
+diff output r3-1
+ret_val2=$?
+
+exit_val=0;
+
+echo -n "test3 "
+if [ $ret_val -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r3
+  echo ""
+  echo "Actual Output:"
+  cat out1
+  echo ""
+
+  exit_val=1
+
+elif [ $ret_val2 -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r3-1
+  echo ""
+  echo "Actual Output:"
+  cat output
+  echo ""
+
+  exit_val=1  
+
+else
+  echo OK
+fi
+
+rm -f out1 output
+exit $exit_val

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+echo "test10: ./proj3 silent ls files PIPE grep a PIPE wc"
+rm -f out1 
+
+../proj3 silent ls files PIPE grep a PIPE wc > out1 2>&1  
+
+diff out1 r10
+ret_val=$?
+
+exit_val=0;
+
+echo -n "test10 "
+if [ $ret_val -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r10
+  echo ""
+  echo "Actual Output:"
+  cat out1
+  echo ""
+
+  exit_val=1
+
+else
+  echo OK
+fi
+
+rm -f out1 output
+exit $exit_val

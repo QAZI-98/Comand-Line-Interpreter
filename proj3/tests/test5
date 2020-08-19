@@ -1,0 +1,51 @@
+#!/bin/sh
+
+echo "test5: ./proj3 silent cat files/bbb GTGT in-5"
+rm -f out1 
+
+cat files/aaa > in-5
+../proj3 silent cat files/bbb GTGT in-5 > out1 2>&1  
+
+diff out1 r5
+ret_val=$?
+
+diff in-5 r5-1
+ret_val2=$?
+
+exit_val=0;
+
+echo -n "test5 "
+if [ $ret_val -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r5
+  echo ""
+  echo "Actual Output:"
+  cat out1
+  echo ""
+
+  exit_val=1
+
+elif [ $ret_val2 -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r5-1
+  echo ""
+  echo "Actual Output:"
+  cat in-5
+  echo ""
+
+  exit_val=1  
+
+else
+  echo OK
+fi
+
+rm -f out1 output
+exit $exit_val

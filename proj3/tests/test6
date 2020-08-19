@@ -1,0 +1,51 @@
+#!/bin/sh
+echo "test6: ./proj3 silent ls nosuchfile GTAMP output"
+rm -f out1 
+
+shell_in="silent ls nosuchfile GTAMP"
+../proj3  $shell_in output > out1 2>&1  
+./proj3-ref  $shell_in output_real > r6-2 2>&1 
+
+diff out1 r6
+ret_val=$?
+
+diff output output_real
+ret_val2=$?
+
+exit_val=0;
+
+echo -n "test6 "
+if [ $ret_val -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat r6
+  echo ""
+  echo "Actual Output:"
+  cat out1
+  echo ""
+
+  exit_val=1
+
+elif [ $ret_val2 -ne 0 ]
+then
+  echo Failed
+
+  echo""
+  echo "Correct Output:"
+  cat output_real
+  echo ""
+  echo "Actual Output:"
+  cat output
+  echo ""
+
+  exit_val=1  
+
+else
+  echo OK
+fi
+
+rm -f out1 output r6-2 output_real
+exit $exit_val
