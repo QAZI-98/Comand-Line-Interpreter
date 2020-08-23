@@ -1,7 +1,7 @@
 # Comand-Line-Interpreter
 
-For	this project,	we	implement	a	program	which	will	execute	a	given	
-command(s)	as	command	line	arguments	to	the	program.	is	supports	
+this project,		implements	a	program	which	will	execute	a	given	
+command(s)	as	command	line	arguments	to	the	program.	it	supports	
 input,	output	and	error	redirection	and	pipes.	However,	instead	of	using	the	
 symbols	used	by	the	shell,	it	will	use	the	following	symbols:
 LT for <
