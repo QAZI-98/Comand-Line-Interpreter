@@ -1,9 +1,9 @@
 # Comand-Line-Interpreter
 
-For	this project,	you	have	to	implement	a	program	which	will	execute	a	given	
-command(s)	as	command	line	arguments	to	your	program.	You	will	need	to	support	
+For	this project,	we	implement	a	program	which	will	execute	a	given	
+command(s)	as	command	line	arguments	to	the	program.	is	supports	
 input,	output	and	error	redirection	and	pipes.	However,	instead	of	using	the	
-symbols	used	by	the	shell,	you	will	use	the	following	symbols:
+symbols	used	by	the	shell,	it	will	use	the	following	symbols:
 LT for <
 GT for >
 GTGT for >>
